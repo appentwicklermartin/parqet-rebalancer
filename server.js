@@ -90,7 +90,7 @@ const server = http.createServer(async (req, res) => {
   // Serve main HTML
   if (parsed.pathname === '/' || parsed.pathname === '/index.html') {
     try {
-      const file = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+      const file = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(file);
     } catch(e) { res.writeHead(500); res.end('index.html nicht gefunden: ' + e.message); }
