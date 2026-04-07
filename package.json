@@ -1,0 +1,15 @@
+{
+  "name": "parqet-rebalancer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "openid-client": "^6.1.7"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
