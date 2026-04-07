@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 const REDIRECT_URI = `${BASE_URL}/callback`;
 const ISSUER = 'https://connect.parqet.com';
+const PORTFOLIO_ID = '672b29d1a8de8fc0af3368e1';
 
-// PKCE helpers
 function base64url(buf) {
   return buf.toString('base64').replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
@@ -19,8 +19,8 @@ function randomPKCECodeVerifier() { return base64url(crypto.randomBytes(32)); }
 function calculatePKCECodeChallenge(v) { return base64url(crypto.createHash('sha256').update(v).digest()); }
 function randomState() { return base64url(crypto.randomBytes(16)); }
 
-// Simple session store
 const sessions = new Map();
+
 function getSession(req) {
   const cookies = parseCookies(req.headers.cookie || '');
   const sid = cookies['sid'];
@@ -41,13 +41,13 @@ function parseCookies(str) {
   return out;
 }
 
-// HTTP helpers
 function httpsRequest(method, urlStr, token, body, extraHeaders) {
   return new Promise((resolve) => {
     const parsed = new URL(urlStr);
     const bodyStr = body || '';
     const headers = {
       'Accept': 'application/json',
+      'User-Agent': 'Mozilla/5.0',
       ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
       ...(body ? {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -69,14 +69,10 @@ function httpsRequest(method, urlStr, token, body, extraHeaders) {
       });
     });
     req.on('error', err => resolve({ status: 0, body: err.message }));
-    req.setTimeout(10000, () => { req.destroy(); resolve({ status: 0, body: 'timeout' }); });
+    req.setTimeout(15000, () => { req.destroy(); resolve({ status: 0, body: 'timeout' }); });
     if (body) req.write(bodyStr);
     req.end();
   });
-}
-
-function fetchProtectedResource(token, endpoint) {
-  return httpsRequest('GET', `${ISSUER}${endpoint}`, token);
 }
 
 const server = http.createServer(async (req, res) => {
@@ -159,7 +155,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // API Status
+  // Auth Status
   if (parsed.pathname === '/api/status') {
     const session = getSession(req);
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -167,38 +163,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // API Holdings — fetch from connect.parqet.com
-  if (parsed.pathname === '/api/holdings') {
-    const session = getSession(req);
-    if (!session || !session.access_token) {
-      res.writeHead(401, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ error: 'Nicht eingeloggt' }));
-      return;
-    }
-
-    try {
-      // Get portfolios from Connect API
-      const portfoliosRes = await fetchProtectedResource(session.access_token, '/portfolios');
-      const items = portfoliosRes.body?.items || [];
-
-      // For each portfolio, we have the metadata
-      // The sync endpoint gives us actual holding values
-      // We use the connect API data we have
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({
-        portfolios: items,
-        // Holdings come from the portfolio data
-        holdings: items[0]?.holdings || [],
-        portfolio: items[0] || {},
-      }));
-    } catch(e) {
-      res.writeHead(500, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ error: e.message }));
-    }
-    return;
-  }
-
-  // Proxy to rebalancing.app sync endpoint (with session cookie)
+  // Main data — fetch from public Parqet API
   if (parsed.pathname === '/api/sync') {
     const session = getSession(req);
     if (!session || !session.access_token) {
@@ -207,27 +172,41 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    const portfolioId = parsed.query.portfolioId;
-    if (!portfolioId) {
-      res.writeHead(400, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ error: 'portfolioId fehlt' }));
-      return;
-    }
+    try {
+      // Use public Parqet API which returns full portfolio with holdings
+      const r = await httpsRequest('GET',
+        `https://api.parqet.com/v1/portfolios/${PORTFOLIO_ID}?timeframe=today`,
+        null, null, {}
+      );
 
-    // Forward request to rebalancing.app with the browser cookie
-    const incomingCookie = req.headers.cookie || '';
-    const r = await httpsRequest('GET',
-      `https://rebalancing.app/api/parqet/sync?portfolioId=${portfolioId}`,
-      null, null,
-      {
-        'Cookie': incomingCookie,
-        'Referer': 'https://rebalancing.app/',
-        'User-Agent': 'Mozilla/5.0',
+      console.log('API status:', r.status);
+      console.log('API keys:', typeof r.body === 'object' ? Object.keys(r.body) : r.body);
+
+      if (r.status !== 200) {
+        res.writeHead(r.status, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'API Fehler', status: r.status }));
+        return;
       }
-    );
 
-    res.writeHead(r.status, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(r.body));
+      const portfolio = r.body.portfolio || r.body;
+      const rawHoldings = portfolio.holdings || portfolio.positions || portfolio.shares || [];
+
+      // Convert to our format
+      const holdings = rawHoldings.map(h => ({
+        name: h.name || h.securityName || h.asset?.name || '',
+        value: h.value || h.currentValue || h.marketValue || 0,
+        assetType: h.assetType || 'security',
+        assetIsin: h.isin || h.security?.isin || h.asset?.isin || '',
+        percentageGain: h.percentageGain || h.gainPercent || h.dailyChangePercent || null,
+      }));
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ holdings, portfolio }));
+    } catch(e) {
+      console.error('Error:', e.message);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+    }
     return;
   }
 
@@ -247,6 +226,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`\n✅ Parqet Rebalancer läuft`);
-  console.log(`   → ${BASE_URL}\n`);
+  console.log(`\n✅ Parqet Rebalancer läuft → ${BASE_URL}\n`);
 });
