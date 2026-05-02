@@ -17,7 +17,6 @@
 *{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 body{background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
 
-/* ── AUTH ── */
 #auth{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;padding:24px;text-align:center}
 .logo-row{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700}
 .logo-row img{width:36px;height:36px}
@@ -32,12 +31,10 @@ body{background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
 .btn-ghost:hover{color:var(--text);background:var(--bg3)}
 .err{background:var(--red-bg);border:1px solid rgba(248,81,73,.3);border-radius:6px;padding:10px;color:var(--red);font-size:12px;margin-top:12px}
 
-/* ── LOADING ── */
 #loading{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:12px}
 .spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── APP ── */
 #app{display:none}
 header{background:var(--bg2);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:50}
 .hdr-l{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
@@ -46,8 +43,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);height:52px;d
 .online-dot{width:7px;height:7px;background:var(--green);border-radius:50%}
 .user-txt{font-size:12px;color:var(--muted)}
 
-/* ── TABS ── */
-.tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;gap:0;padding:0 20px;overflow-x:auto}
+.tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;padding:0 20px;overflow-x:auto}
 .tab{padding:12px 16px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s}
 .tab:hover{color:var(--text)}
 .tab.active{color:var(--blue);border-bottom-color:var(--blue)}
@@ -56,7 +52,6 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);height:52px;d
 .panel{display:none}
 .panel.active{display:block}
 
-/* ── CARDS ── */
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
@@ -67,11 +62,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);height:52px;d
 .card-val{font-size:24px;font-weight:700;line-height:1}
 .card-sub{font-size:12px;color:var(--muted);margin-top:5px}
 .card h3{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;font-weight:600}
-.pos{color:var(--green)}
-.neg{color:var(--red)}
-.warn{color:var(--yellow)}
+.pos{color:var(--green)}.neg{color:var(--red)}.warn{color:var(--yellow)}
 
-/* ── TABLE ── */
 .tbl-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;padding:7px 10px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);font-weight:500;white-space:nowrap}
@@ -87,76 +79,62 @@ th.r,td.r{text-align:right}
 .badge.warn{background:rgba(210,153,34,.15);color:var(--yellow)}
 .badge.blue{background:rgba(88,166,255,.12);color:var(--blue)}
 
-/* ── ALLOC BAR ── */
 .alloc-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .alloc-name{font-size:12px;min-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .alloc-track{flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden}
 .alloc-fill{height:100%;border-radius:4px}
 .alloc-pct{font-size:11px;color:var(--muted);min-width:36px;text-align:right}
-.alloc-target{font-size:11px;color:var(--muted2);min-width:36px;text-align:right}
+.alloc-target{font-size:11px;color:var(--muted2);min-width:50px;text-align:right}
 
-/* ── BLOCK CARD ── */
 .block-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px;margin-bottom:20px}
 .block-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .block-hdr{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
 .block-name{font-size:13px;font-weight:600}
-.block-meta{display:flex;gap:8px;font-size:12px}
-.block-body{padding:0}
+.block-meta{display:flex;gap:8px;font-size:12px;align-items:center;flex-wrap:wrap}
 
-/* ── MOVER LIST ── */
 .mover{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;border-bottom:1px solid var(--bg3)}
 .mover:last-child{border-bottom:none}
 .mover-name{font-size:13px;font-weight:600}
 .mover-isin{font-size:11px;color:var(--muted)}
 
-/* ── DIV MATRIX ── */
 .div-matrix{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;font-size:11px}
 .dm-header{color:var(--muted);text-align:center;padding:4px 2px}
 .dm-cell{background:var(--bg3);border-radius:4px;text-align:center;padding:4px 2px;min-height:28px;display:flex;align-items:center;justify-content:center}
 .dm-cell.has-div{background:rgba(63,185,80,.2);color:var(--green);font-weight:600}
 .dm-cell.row-label{background:none;text-align:right;color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;justify-content:flex-end}
 
-/* ── RISK ── */
 .risk-gauge{text-align:center;padding:20px 0}
 .risk-number{font-size:48px;font-weight:700}
 .risk-label{font-size:14px;color:var(--muted);margin-top:4px}
 .risk-bar-wrap{height:10px;background:var(--bg4);border-radius:5px;overflow:hidden;margin:16px 0 6px}
 .risk-bar{height:100%;border-radius:5px;transition:width .5s}
-.risk-list{list-style:none}
-.risk-list li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px}
-.risk-list li:last-child{border-bottom:none}
 
-/* ── TREPPE ── */
 .treppe-block{margin-bottom:20px}
 .treppe-block-header{background:var(--bg3);padding:10px 14px;border-radius:var(--radius) var(--radius) 0 0;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--border);border-bottom:none}
 .treppe-block-header .name{font-weight:600;font-size:14px}
-.treppe-block-header .meta{font-size:12px;color:var(--muted)}
+.treppe-block-header .meta{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
 .treppe-tbl{width:100%;font-size:12px;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);overflow:hidden}
 .treppe-tbl th{font-size:10px;background:var(--bg2)}
 .treppe-tbl td,.treppe-tbl th{padding:7px 10px}
 
-/* ── PROGNOSE ── */
 .prog-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.prog-bar-label{font-size:12px;min-width:120px}
+.prog-bar-label{font-size:12px;min-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .prog-bar-track{flex:1;height:8px;background:var(--bg4);border-radius:4px;overflow:hidden}
 .prog-bar-fill{height:100%;background:var(--green);border-radius:4px}
-.prog-bar-val{font-size:12px;color:var(--muted);min-width:50px;text-align:right}
+.prog-bar-val{font-size:12px;color:var(--muted);min-width:60px;text-align:right}
 
-/* ── DIV CALENDAR ── */
 .cal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .cal-month{background:var(--bg3);border-radius:8px;padding:12px}
 .cal-month-name{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .cal-month-total{font-size:18px;font-weight:700}
-.cal-month-funds{font-size:11px;color:var(--muted);margin-top:4px}
+.cal-month-funds{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.4}
 
-/* ── CHIP ── */
 .chip{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
 .chip-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(63,185,80,.3)}
 .chip-red{background:var(--red-bg);color:var(--red);border:1px solid rgba(248,81,73,.3)}
 .chip-blue{background:rgba(88,166,255,.12);color:var(--blue);border:1px solid rgba(88,166,255,.3)}
 .chip-yellow{background:rgba(210,153,34,.15);color:var(--yellow);border:1px solid rgba(210,153,34,.3)}
 
-/* scrollbar */
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
@@ -164,11 +142,10 @@ th.r,td.r{text-align:right}
 </head>
 <body>
 
-<!-- AUTH -->
 <div id="auth">
   <div class="logo-row">
     <img src="https://www.parqet.com/logos/parqet_icon_pos_alt.svg" alt="Parqet">
-    Pro Dashboard
+    FNZ Pro Dashboard
   </div>
   <div class="auth-card">
     <h2>Mit Parqet verbinden</h2>
@@ -181,13 +158,11 @@ th.r,td.r{text-align:right}
   </div>
 </div>
 
-<!-- LOADING -->
 <div id="loading">
   <div class="spin"></div>
   <p style="color:var(--muted);font-size:13px" id="load-msg">Lade Daten…</p>
 </div>
 
-<!-- APP -->
 <div id="app">
   <header>
     <div class="hdr-l">
@@ -197,7 +172,7 @@ th.r,td.r{text-align:right}
     <div class="hdr-r">
       <div class="online-dot"></div>
       <span class="user-txt" id="user-email"></span>
-      <button class="btn btn-sm btn-ghost" onclick="loadAll()">↻</button>
+      <button class="btn btn-sm btn-ghost" onclick="loadAll()">↻ Aktualisieren</button>
       <button class="btn btn-sm btn-ghost" onclick="logout()">Abmelden</button>
     </div>
   </header>
@@ -212,70 +187,46 @@ th.r,td.r{text-align:right}
 
   <div class="content">
 
-    <!-- ══ ÜBERSICHT ══ -->
     <div class="panel active" id="tab-overview">
       <div class="grid4" id="kpi-row"></div>
       <div class="grid2">
-        <div class="card" id="block-alloc-card">
-          <h3>Block-Allokation</h3>
-          <div id="block-alloc"></div>
-        </div>
-        <div class="card">
-          <h3>Top Mover heute</h3>
-          <div id="top-movers"></div>
-        </div>
+        <div class="card"><h3>Block-Allokation</h3><div id="block-alloc"></div></div>
+        <div class="card"><h3>Top Mover heute</h3><div id="top-movers"></div></div>
       </div>
       <div class="card">
         <h3>Alle Positionen</h3>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr>
-              <th>Position</th><th class="r">Anteile</th><th class="r">Kurs</th>
-              <th class="r">Wert</th><th class="r">Investiert</th>
-              <th class="r">G/V €</th><th class="r">G/V %</th><th class="r">Heute</th>
-              <th>Block</th>
-            </tr></thead>
-            <tbody id="all-holdings"></tbody>
-          </table>
-        </div>
+        <div class="tbl-wrap"><table>
+          <thead><tr>
+            <th>Position</th><th class="r">Anteile</th><th class="r">Kurs</th>
+            <th class="r">Wert</th><th class="r">Investiert</th>
+            <th class="r">G/V €</th><th class="r">G/V %</th><th class="r">Heute</th><th>Block</th>
+          </tr></thead>
+          <tbody id="all-holdings"></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ══ TREPPE ══ -->
     <div class="panel" id="tab-treppe">
       <div class="grid3" id="treppe-kpi"></div>
       <div id="treppe-blocks"></div>
     </div>
 
-    <!-- ══ DIVIDENDEN ══ -->
     <div class="panel" id="tab-dividenden">
       <div class="grid4" id="div-kpi"></div>
       <div class="grid2">
-        <div class="card">
-          <h3>📅 Dividendenkalender</h3>
-          <div class="cal-grid" id="div-cal"></div>
-        </div>
-        <div class="card">
-          <h3>📊 Prognose (nächste 12 Monate)</h3>
-          <div id="div-prog"></div>
-        </div>
+        <div class="card"><h3>📅 Dividendenkalender (letzte 12 Monate)</h3><div class="cal-grid" id="div-cal"></div></div>
+        <div class="card"><h3>📊 Prognose nach Fonds (TTM)</h3><div id="div-prog"></div></div>
       </div>
-      <div class="card">
-        <h3>Matrix · Fonds × Monat</h3>
-        <div class="div-matrix" id="div-matrix"></div>
-      </div>
+      <div class="card"><h3>Matrix · Fonds × Monat (aktuelles Jahr)</h3><div class="div-matrix" id="div-matrix"></div></div>
       <div class="card" style="margin-top:14px">
         <h3>Alle Dividenden-Transaktionen</h3>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Datum</th><th>Fonds</th><th class="r">Brutto</th><th class="r">Steuern</th><th class="r">Netto</th></tr></thead>
-            <tbody id="div-tx"></tbody>
-          </table>
-        </div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Datum</th><th>Fonds</th><th class="r">Brutto</th><th class="r">Steuern</th><th class="r">Netto</th></tr></thead>
+          <tbody id="div-tx"></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ══ RISIKO ══ -->
     <div class="panel" id="tab-risiko">
       <div class="grid2">
         <div class="card">
@@ -287,134 +238,117 @@ th.r,td.r{text-align:right}
             <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>Niedrig</span><span>Hoch</span></div>
           </div>
         </div>
-        <div class="card">
-          <h3>Risikoverteilung nach Block</h3>
-          <div id="block-risk"></div>
-        </div>
+        <div class="card"><h3>Risikoverteilung nach Block</h3><div id="block-risk"></div></div>
       </div>
       <div class="grid2">
-        <div class="card">
-          <h3>Konzentrations-Risiko</h3>
-          <div id="concentration-risk"></div>
-        </div>
-        <div class="card">
-          <h3>Geographisches Klumpenrisiko</h3>
-          <div id="geo-risk"></div>
-        </div>
+        <div class="card"><h3>Konzentrations-Risiko (Top 5)</h3><div id="concentration-risk"></div></div>
+        <div class="card"><h3>Geographisches Klumpenrisiko</h3><div id="geo-risk"></div></div>
       </div>
       <div class="card" style="margin-top:14px">
         <h3>Volatilitäts-Einschätzung je Position</h3>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Fonds</th><th>Block</th><th class="r">G/V %</th><th class="r">Risiko-Score</th><th>Einschätzung</th></tr></thead>
-            <tbody id="risk-table"></tbody>
-          </table>
-        </div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Fonds</th><th>Block</th><th class="r">G/V %</th><th class="r">Risiko-Score</th><th>Einschätzung</th></tr></thead>
+          <tbody id="risk-table"></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ══ REBALANCING ══ -->
     <div class="panel" id="tab-rebalancing">
       <div class="grid4" id="reb-kpi"></div>
       <div class="block-wrap" id="reb-blocks"></div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /app -->
+  </div>
+</div>
 
 <script>
-// ══════════════════════════════════════════
-//  CONFIG
-// ══════════════════════════════════════════
-const CLIENT_ID   = '019d6826-4b3a-724a-8644-44fa63ce23ae';
-const PORTFOLIO   = '672b29d1a8de8fc0af3368e1';
-const REDIRECT    = 'https://parqet-rebalancer-smjf.onrender.com';
-const AUTH_URL    = 'https://app.parqet.com/oauth/authorize';
-const TOKEN_URL   = 'https://connect.parqet.com/oauth/token';
-const API         = 'https://connect.parqet.com';
+const CLIENT_ID = '019d6826-4b3a-724a-8644-44fa63ce23ae';
+const PORTFOLIO = '672b29d1a8de8fc0af3368e1';
+const REDIRECT  = 'https://parqet-rebalancer-smjf.onrender.com';
+const AUTH_URL  = 'https://connect.parqet.com/oauth2/authorize';
+const TOKEN_URL = 'https://connect.parqet.com/oauth2/token';
+const API       = 'https://connect.parqet.com';
 
-// Block-Zielgewichtungen
 const BLOCKS = {
-  'Technologie':          { target: 27, color: '#58a6ff', isins: ['LU0099574567','LU1681043873','IE00BKDWX036','LU0592215403'] },
-  'Core':                 { target: 20, color: '#3fb950', isins: ['IE00BK5BQT80','LU0925589839'] },
-  'Asien/Emerging Markets':{ target: 20, color: '#d29922', isins: ['LU0234572021','LU0592215403','LU1815582413','IE0003XJG0J3'] },
-  'Defense':              { target: 10, color: '#f0883e', isins: ['IE00BMW3QX54','IE00B4WXJJ64'] },
-  'Energie & Infrastruktur':{ target: 8, color: '#bc8cff', isins: ['LU0490623991','LU2025289639'] },
-  'Healthcare & Biotech': { target: 6, color: '#56d364', isins: ['IE00B3YLTY66','IE00B5VJKC34'] },
-  'Rohstoffe':            { target: 5, color: '#ffa657', isins: ['IE00B579F325'] },
-  'Frontier Markets':     { target: 4, color: '#79c0ff', isins: [] },
+  'Technologie':            { target:27, color:'#58a6ff' },
+  'Core':                   { target:20, color:'#3fb950' },
+  'Asien/Emerging Markets': { target:20, color:'#d29922' },
+  'Defense':                { target:10, color:'#f0883e' },
+  'Energie & Infrastruktur':{ target:8,  color:'#bc8cff' },
+  'Healthcare & Biotech':   { target:6,  color:'#56d364' },
+  'Rohstoffe':              { target:5,  color:'#ffa657' },
+  'Frontier Markets':       { target:4,  color:'#79c0ff' },
 };
 
-// ══ PKCE ══
+// PKCE
 const b64u = buf => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
-const genV = () => { const a=crypto.getRandomValues(new Uint8Array(32)); return b64u(a); }
-const genC = async v => { const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)); return b64u(h); }
+const genV = () => b64u(crypto.getRandomValues(new Uint8Array(32)));
+const genC = async v => b64u(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(v)));
 
-// ══ Storage ══
 const save  = t => sessionStorage.setItem('pq_tok', JSON.stringify(t));
-const load  = ()=> { try { return JSON.parse(sessionStorage.getItem('pq_tok')); } catch { return null; } }
-const clear = ()=> ['pq_tok','pq_v','pq_s'].forEach(k=>sessionStorage.removeItem(k));
+const load  = () => { try { return JSON.parse(sessionStorage.getItem('pq_tok')); } catch { return null; } };
+const clear = () => ['pq_tok','pq_v','pq_s'].forEach(k => sessionStorage.removeItem(k));
 
-// ══ OAuth ══
 async function startOAuth() {
-  const v=genV(), c=await genC(v), s=b64u(crypto.getRandomValues(new Uint8Array(16)));
-  sessionStorage.setItem('pq_v',v); sessionStorage.setItem('pq_s',s);
-  const p=new URLSearchParams({client_id:CLIENT_ID,response_type:'code',redirect_uri:REDIRECT,
-    scope:'portfolio:read',code_challenge:c,code_challenge_method:'S256',state:s});
-  location.href=AUTH_URL+'?'+p;
+  const v = genV(), c = await genC(v), s = b64u(crypto.getRandomValues(new Uint8Array(16)));
+  sessionStorage.setItem('pq_v', v); sessionStorage.setItem('pq_s', s);
+  const p = new URLSearchParams({ client_id:CLIENT_ID, response_type:'code', redirect_uri:REDIRECT,
+    scope:'portfolio:read', code_challenge:c, code_challenge_method:'S256', state:s });
+  location.href = AUTH_URL + '?' + p;
 }
-async function handleCB(code,state) {
-  if(state!==sessionStorage.getItem('pq_s')){ showErr('State mismatch.'); return; }
+
+async function handleCB(code, state) {
+  if (state !== sessionStorage.getItem('pq_s')) { show('auth'); showErr('State mismatch.'); return; }
   show('loading'); setMsg('Authentifizierung…');
-  const v=sessionStorage.getItem('pq_v');
-  const res=await fetch(TOKEN_URL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:new URLSearchParams({grant_type:'authorization_code',code,redirect_uri:REDIRECT,client_id:CLIENT_ID,code_verifier:v})});
-  if(!res.ok){ show('auth'); showErr('Token-Exchange: '+res.status); return; }
+  const res = await fetch(TOKEN_URL, { method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: new URLSearchParams({ grant_type:'authorization_code', code, redirect_uri:REDIRECT,
+      client_id:CLIENT_ID, code_verifier:sessionStorage.getItem('pq_v') }) });
+  if (!res.ok) { show('auth'); showErr('Token-Fehler: ' + res.status); return; }
   save(await res.json());
-  history.replaceState({},'',location.pathname);
+  history.replaceState({}, '', location.pathname);
   await loadAll();
 }
 
-// ══ API ══
-async function api(path,opts={}) {
-  const t=load(); if(!t) throw new Error('Nicht autorisiert');
-  const r=await fetch(API+path,{...opts,headers:{Authorization:'Bearer '+t.access_token,'Content-Type':'application/json',...(opts.headers||{})}});
-  if(!r.ok) throw new Error('API '+r.status+' '+path);
+async function api(path, opts={}) {
+  const t = load(); if (!t) throw new Error('Nicht autorisiert');
+  const r = await fetch(API + path, { ...opts,
+    headers:{ Authorization:'Bearer '+t.access_token, 'Content-Type':'application/json', ...(opts.headers||{}) } });
+  if (!r.ok) throw new Error('API ' + r.status + ' ' + path);
   return r.json();
 }
 
-// ══════════════════════════════════════════
-//  DATA
-// ══════════════════════════════════════════
-let G = {}; // global data cache
+let G = {};
 
 async function loadAll() {
-  show('loading'); setMsg('Lade Portfolio-Daten…');
+  show('loading');
   try {
+    setMsg('Verbinde mit Parqet…');
     const user = await api('/user');
-    document.getElementById('user-email').textContent = user.email||'Verbunden';
+    document.getElementById('user-email').textContent = user.email || 'Verbunden';
 
-    setMsg('Lade Performance…');
-    const perf = await api('/performance',{method:'POST',
-      body:JSON.stringify({portfolioIds:[PORTFOLIO],timeframe:'max'})});
+    setMsg('Lade Performance-Daten…');
+    const perf = await api('/performance', { method:'POST',
+      body: JSON.stringify({ portfolioIds:[PORTFOLIO], timeframe:'max' }) });
 
-    setMsg('Lade Aktivitäten…');
-    let acts=[], cursor=null, page=0;
+    setMsg('Lade Transaktionen…');
+    let acts = [], cursor = null, page = 0;
     do {
-      const url='/portfolios/'+PORTFOLIO+'/activities?limit=500'+(cursor?'&cursor='+cursor:'');
-      const r=await api(url);
-      acts=acts.concat(r.activities||r.items||r||[]);
-      cursor=r.nextCursor||r.cursor||null; page++;
-    } while(cursor && page<10);
+      const url = '/portfolios/'+PORTFOLIO+'/activities?limit=500' + (cursor ? '&cursor='+cursor : '');
+      const r = await api(url);
+      acts = acts.concat(r.activities || r.items || []);
+      cursor = r.nextCursor || null; page++;
+    } while (cursor && page < 10);
 
-    G.perf=perf; G.acts=acts;
-    G.holdings=perf.holdings||perf.portfolio?.holdings||[];
-    G.tv=perf.totalValue||perf.portfolio?.totalValue||perf.valuation?.atIntervalEnd||0;
-    G.invested=perf.investedCapital||perf.portfolio?.investedCapital||0;
-    G.pnl=G.tv-G.invested;
-    G.todayPnl=perf.todayPnl||perf.dayReturn||null;
-    G.todayPct=perf.todayReturnPct||perf.dayReturnPct||null;
-    G.dividends=acts.filter(a=>a.activityType==='dividend'||a.type==='dividend');
+    G.perf     = perf;
+    G.acts     = acts;
+    G.holdings = perf.holdings || perf.portfolio?.holdings || [];
+    G.tv       = perf.totalValue || perf.portfolio?.totalValue || perf.valuation?.atIntervalEnd || 0;
+    G.invested = perf.investedCapital || perf.portfolio?.investedCapital || 0;
+    G.pnl      = G.tv - G.invested;
+    G.todayPnl = perf.todayPnl || perf.dayReturn || null;
+    G.todayPct = perf.todayReturnPct || perf.dayReturnPct || null;
+    G.dividends= acts.filter(a => a.activityType==='dividend' || a.type==='dividend');
 
     show('app');
     renderAll();
@@ -429,148 +363,113 @@ function renderAll() {
   renderRebalancing();
 }
 
-// ══════════════════════════════════════════
-//  HELPERS
-// ══════════════════════════════════════════
-const fe = (n,d=2)=> n==null?'–':(+n).toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d})+' €';
-const fp = (n,d=2)=> n==null?'–':((+n>=0?'+':'')+((+n).toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}))+'%');
-const cc  = n=> n==null?'':+n>=0?'pos':'neg';
-const num = n=> n==null||isNaN(+n)?0:+n;
+// HELPERS
+const fe  = (n,d=2) => n==null ? '–' : (+n).toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}) + ' €';
+const fp  = (n,d=2) => n==null ? '–' : ((+n>=0?'+':'') + (+n).toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}) + '%');
+const cc  = n => n==null ? '' : +n>=0 ? 'pos' : 'neg';
+const num = n => n==null||isNaN(+n) ? 0 : +n;
 
 function assignBlock(h) {
-  const isin=(h.asset?.isin||h.isin||'').toUpperCase();
-  const name=(h.asset?.name||h.name||'').toLowerCase();
-  for(const [bname,bdata] of Object.entries(BLOCKS)) {
-    if(bdata.isins.some(i=>i===isin)) return bname;
-  }
-  if(/india|jupiter/i.test(name)) return 'Asien/Emerging Markets';
-  if(/defense|defence|wisdomtree def/i.test(name)) return 'Defense';
-  if(/health|biotech|janus/i.test(name)) return 'Healthcare & Biotech';
-  if(/frontier|evli|hsbc front/i.test(name)) return 'Frontier Markets';
-  if(/gold|silber|commodity|bakersteel|battery/i.test(name)) return 'Rohstoffe';
-  if(/power|infra|energie|energy|robecosam/i.test(name)) return 'Energie & Infrastruktur';
-  if(/tech|robotics|semiconductor|ai|digital|fidelity/i.test(name)) return 'Technologie';
-  if(/kommer|global|world|core|robeco bp/i.test(name)) return 'Core';
+  const name = (h.asset?.name||h.name||'').toLowerCase();
+  if (/fidelity.*tech|xtrackers.*ai|vaneck.*semi|pictet.*robot/i.test(name)) return 'Technologie';
+  if (/kommer|robeco.*bp|core|world.*etf/i.test(name)) return 'Core';
+  if (/india|jupiter|acatis|qilin|vietnam|lumen|asia|japan|emerg/i.test(name)) return 'Asien/Emerging Markets';
+  if (/defense|defence|wisdomtree.*def|vaneck.*def/i.test(name)) return 'Defense';
+  if (/power|infra|energie|energy|robecosam|tbf/i.test(name)) return 'Energie & Infrastruktur';
+  if (/health|biotech|janus/i.test(name)) return 'Healthcare & Biotech';
+  if (/gold|silber|commodity|bakersteel|battery|rohstoff/i.test(name)) return 'Rohstoffe';
+  if (/frontier|evli|hsbc.*front/i.test(name)) return 'Frontier Markets';
   return 'Sonstige';
 }
 
-// ══════════════════════════════════════════
-//  ÜBERSICHT
-// ══════════════════════════════════════════
+// ── ÜBERSICHT ──
 function renderOverview() {
-  // KPIs
   document.getElementById('kpi-row').innerHTML = [
-    {label:'Depotwert',     val:fe(G.tv),         sub:'Aktuell'},
-    {label:'Investiert',    val:fe(G.invested),    sub:'Eingesetztes Kapital'},
-    {label:'Gesamt G/V',    val:fe(G.pnl),         sub:fp(G.invested?G.pnl/G.invested*100:0), cls:cc(G.pnl)},
-    {label:'Heute',         val:G.todayPnl!=null?fe(G.todayPnl):'–', sub:fp(G.todayPct), cls:cc(G.todayPnl)},
+    {label:'Depotwert',    val:fe(G.tv),      sub:'Aktuell'},
+    {label:'Investiert',   val:fe(G.invested), sub:'Eingesetztes Kapital'},
+    {label:'Gesamt G/V',   val:fe(G.pnl),      sub:fp(G.invested?G.pnl/G.invested*100:0), cls:cc(G.pnl)},
+    {label:'Heute',        val:G.todayPnl!=null?fe(G.todayPnl):'–', sub:fp(G.todayPct), cls:cc(G.todayPnl)},
   ].map(k=>`<div class="card"><div class="card-label">${k.label}</div>
-    <div class="card-val ${k.cls||''}">${k.val}</div>
-    <div class="card-sub">${k.sub}</div></div>`).join('');
+    <div class="card-val ${k.cls||''}">${k.val}</div><div class="card-sub">${k.sub}</div></div>`).join('');
 
-  // Block-Allokation
-  const blockVals={};
-  G.holdings.forEach(h=>{
-    const b=assignBlock(h);
-    blockVals[b]=(blockVals[b]||0)+num(h.position?.currentValue||h.currentValue);
-  });
-  const bHtml=Object.entries(BLOCKS).map(([name,d])=>{
-    const ist=blockVals[name]||0;
-    const istPct=G.tv?(ist/G.tv*100):0;
-    const diff=istPct-d.target;
+  const bv = {};
+  G.holdings.forEach(h => { const b=assignBlock(h); bv[b]=(bv[b]||0)+num(h.position?.currentValue||h.currentValue); });
+  document.getElementById('block-alloc').innerHTML = Object.entries(BLOCKS).map(([name,d]) => {
+    const ist=bv[name]||0, istPct=G.tv?ist/G.tv*100:0, diff=istPct-d.target;
     return `<div class="alloc-row">
       <div class="alloc-name">${name}</div>
       <div class="alloc-track"><div class="alloc-fill" style="width:${Math.min(istPct/d.target*100,100)}%;background:${d.color}"></div></div>
-      <div class="alloc-pct ${cc(diff)}">${fe(ist,' ').replace(' €','').trim()}€</div>
-      <div class="alloc-target">${istPct.toFixed(1)}%/<span style="color:var(--muted2)">${d.target}%</span></div>
+      <div class="alloc-pct ${cc(diff)}">${istPct.toFixed(1)}%</div>
+      <div class="alloc-target" style="color:var(--muted2)">${d.target}%</div>
     </div>`;
   }).join('');
-  document.getElementById('block-alloc').innerHTML=bHtml;
 
-  // Top Movers
-  const sorted=[...G.holdings].filter(h=>h.performance?.dayReturnPct!=null||h.todayReturnPct!=null)
-    .sort((a,b)=>Math.abs(num(b.performance?.dayReturnPct||b.todayReturnPct))-Math.abs(num(a.performance?.dayReturnPct||a.todayReturnPct)))
-    .slice(0,8);
-  document.getElementById('top-movers').innerHTML=sorted.map(h=>{
+  const sorted = [...G.holdings].filter(h=>h.performance?.dayReturnPct!=null||h.todayReturnPct!=null)
+    .sort((a,b)=>Math.abs(num(b.performance?.dayReturnPct||b.todayReturnPct))-Math.abs(num(a.performance?.dayReturnPct||a.todayReturnPct))).slice(0,8);
+  document.getElementById('top-movers').innerHTML = sorted.map(h => {
     const dp=num(h.performance?.dayReturnPct||h.todayReturnPct);
-    return `<div class="mover">
-      <div><div class="mover-name">${h.asset?.name||h.name||'–'}</div>
+    return `<div class="mover"><div><div class="mover-name">${h.asset?.name||h.name||'–'}</div>
       <div class="mover-isin">${h.asset?.isin||''}</div></div>
-      <span class="badge ${cc(dp)}">${fp(dp)}</span>
-    </div>`;
-  }).join('') || '<div style="padding:16px;color:var(--muted);font-size:13px">Keine Tagesdaten</div>';
+      <span class="badge ${cc(dp)}">${fp(dp)}</span></div>`;
+  }).join('') || '<div style="padding:16px;color:var(--muted);font-size:13px">Keine Tagesdaten verfügbar</div>';
 
-  // All holdings table
-  document.getElementById('all-holdings').innerHTML=
-    [...G.holdings].sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue))
-    .map(h=>{
+  document.getElementById('all-holdings').innerHTML = [...G.holdings]
+    .sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue))
+    .map(h => {
       const val=num(h.position?.currentValue||h.currentValue);
-      const inv=num(h.position?.purchaseValue||h.investedCapital||h.invested);
-      const pnl=val-inv; const pnlPct=inv?pnl/inv*100:0;
+      const inv=num(h.position?.purchaseValue||h.investedCapital||0);
+      const pnl=val-inv, pnlPct=inv?pnl/inv*100:0;
       const dp=h.performance?.dayReturnPct||h.todayReturnPct;
-      const blk=assignBlock(h);
+      const sh=h.position?.shares??h.shares;
+      const cp=h.asset?.currentPrice??h.currentPrice;
       return `<tr>
-        <td><div class="ticker">${h.asset?.name||h.name||'–'}</div>
-            <div class="sub-txt">${h.asset?.isin||''}</div></td>
-        <td class="r">${h.position?.shares!=null?fe(h.position.shares,'').replace('€','').trim():h.shares!=null?fe(h.shares,'').replace('€','').trim():'–'}</td>
-        <td class="r">${h.asset?.currentPrice!=null?fe(h.asset.currentPrice):h.currentPrice!=null?fe(h.currentPrice):'–'}</td>
-        <td class="r">${fe(val)}</td>
-        <td class="r">${fe(inv)}</td>
+        <td><div class="ticker">${h.asset?.name||h.name||'–'}</div><div class="sub-txt">${h.asset?.isin||''}</div></td>
+        <td class="r">${sh!=null?num(sh).toLocaleString('de-DE',{maximumFractionDigits:4}):'–'}</td>
+        <td class="r">${cp!=null?fe(cp):'–'}</td>
+        <td class="r">${fe(val)}</td><td class="r">${fe(inv)}</td>
         <td class="r ${cc(pnl)}">${fe(pnl)}</td>
         <td class="r ${cc(pnlPct)}">${fp(pnlPct)}</td>
         <td class="r ${cc(dp)}">${dp!=null?fp(dp):'–'}</td>
-        <td><span class="chip chip-blue" style="font-size:10px">${blk}</span></td>
+        <td><span class="chip chip-blue" style="font-size:10px">${assignBlock(h)}</span></td>
       </tr>`;
     }).join('');
 }
 
-// ══════════════════════════════════════════
-//  TREPPE
-// ══════════════════════════════════════════
+// ── TREPPE ──
 function renderTreppe() {
-  // Group activities by isin
-  const byIsin={};
-  G.acts.filter(a=>a.activityType==='buy'||a.type==='buy').forEach(a=>{
-    const isin=a.isin||a.asset?.isin||'';
-    if(!byIsin[isin]) byIsin[isin]={buys:[], divs:[]};
+  const byIsin = {};
+  G.acts.filter(a=>a.activityType==='buy'||a.type==='buy').forEach(a => {
+    const isin=a.isin||a.asset?.isin||'?';
+    if (!byIsin[isin]) byIsin[isin]={buys:[],divs:[]};
     byIsin[isin].buys.push(a);
   });
-  G.dividends.forEach(a=>{
-    const isin=a.isin||a.asset?.isin||'';
-    if(!byIsin[isin]) byIsin[isin]={buys:[], divs:[]};
+  G.dividends.forEach(a => {
+    const isin=a.isin||a.asset?.isin||'?';
+    if (!byIsin[isin]) byIsin[isin]={buys:[],divs:[]};
     byIsin[isin].divs.push(a);
   });
 
-  // Group holdings by block
-  const blockH={};
-  G.holdings.forEach(h=>{
-    const b=assignBlock(h);
-    if(!blockH[b]) blockH[b]=[];
-    blockH[b].push(h);
-  });
+  const totalBuys = G.acts.filter(a=>a.activityType==='buy'||a.type==='buy').length;
+  const dates = G.acts.filter(a=>a.activityType==='buy'||a.type==='buy').map(a=>new Date(a.date||a.datetime)).sort((a,b)=>a-b);
+  const avgDays = dates.length>1 ? Math.round((dates[dates.length-1]-dates[0])/(dates.length-1)/86400000) : null;
+  const totalDiv = G.dividends.reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
 
-  // KPIs
-  const avgBuys=G.acts.filter(a=>a.activityType==='buy'||a.type==='buy').length;
-  const avgDays=(()=>{
-    const dates=G.acts.filter(a=>a.activityType==='buy'||a.type==='buy').map(a=>new Date(a.date||a.datetime));
-    if(dates.length<2) return null;
-    dates.sort((a,b)=>a-b);
-    const ms=(dates[dates.length-1]-dates[0])/(dates.length-1);
-    return Math.round(ms/86400000);
-  })();
-  const totalDiv=G.dividends.reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
-  document.getElementById('treppe-kpi').innerHTML=[
-    {label:'Käufe gesamt',val:avgBuys,sub:'Transaktionen'},
-    {label:'Ø Tage zwischen Käufen',val:avgDays!=null?avgDays+'d':'–',sub:'Kaufrhythmus'},
-    {label:'Dividenden gesamt (netto)',val:fe(totalDiv),sub:'Alle Ausschüttungen'},
+  document.getElementById('treppe-kpi').innerHTML = [
+    {label:'Käufe gesamt', val:totalBuys, sub:'Transaktionen'},
+    {label:'Ø Tage zwischen Käufen', val:avgDays!=null?avgDays+'d':'–', sub:'Kaufrhythmus'},
+    {label:'Dividenden gesamt (netto)', val:fe(totalDiv), sub:'Alle Ausschüttungen'},
   ].map(k=>`<div class="card"><div class="card-label">${k.label}</div>
     <div class="card-val">${k.val}</div><div class="card-sub">${k.sub}</div></div>`).join('');
 
-  // Blocks + Treppe
-  document.getElementById('treppe-blocks').innerHTML=Object.entries(BLOCKS).map(([bname,bdata])=>{
-    const holdings=blockH[bname]||[];
-    if(!holdings.length) return '';
-    const rows=holdings.map(h=>{
+  const blockH = {};
+  G.holdings.forEach(h => { const b=assignBlock(h); if(!blockH[b]) blockH[b]=[]; blockH[b].push(h); });
+
+  document.getElementById('treppe-blocks').innerHTML = Object.entries(BLOCKS).map(([bname,bdata]) => {
+    const holdings = blockH[bname]||[];
+    if (!holdings.length) return '';
+    const bVal = holdings.reduce((s,h)=>s+num(h.position?.currentValue||h.currentValue),0);
+    const bPct = G.tv?bVal/G.tv*100:0;
+    const rows = holdings.map(h => {
       const isin=h.asset?.isin||h.isin||'';
       const info=byIsin[isin]||{buys:[],divs:[]};
       const buys=[...info.buys].sort((a,b)=>new Date(a.date||a.datetime)-new Date(b.date||b.datetime));
@@ -578,14 +477,14 @@ function renderTreppe() {
       const totalInv=buys.reduce((s,b)=>s+num(b.amount||b.value),0);
       const vwap=totalShares?totalInv/totalShares:0;
       const curPrice=num(h.asset?.currentPrice||h.currentPrice);
-      const vwapDiff=vwap&&curPrice?((curPrice-vwap)/vwap*100):null;
+      const vwapDiff=vwap&&curPrice?(curPrice-vwap)/vwap*100:null;
       const curVal=num(h.position?.currentValue||h.currentValue);
-      const pnl=curVal-totalInv; const pnlPct=totalInv?pnl/totalInv*100:null;
+      const inv=num(h.position?.purchaseValue||h.investedCapital||totalInv);
+      const pnlPct=inv?(curVal-inv)/inv*100:null;
       const divTotal=info.divs.reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
       const lastBuy=buys.length?new Date(buys[buys.length-1].date||buys[buys.length-1].datetime):null;
       return `<tr>
-        <td><div class="ticker" style="font-size:12px">${h.asset?.name||h.name||'–'}</div>
-            <div class="sub-txt">${isin}</div></td>
+        <td><div class="ticker" style="font-size:12px">${h.asset?.name||h.name||'–'}</div><div class="sub-txt">${isin}</div></td>
         <td class="r">${buys.length}</td>
         <td class="r">${lastBuy?lastBuy.toLocaleDateString('de-DE'):'–'}</td>
         <td class="r">${fe(totalInv)}</td>
@@ -595,267 +494,184 @@ function renderTreppe() {
         <td class="r pos">${divTotal>0?fe(divTotal):'–'}</td>
       </tr>`;
     }).join('');
-    const bVal=holdings.reduce((s,h)=>s+num(h.position?.currentValue||h.currentValue),0);
-    const bPct=G.tv?(bVal/G.tv*100):0;
     return `<div class="treppe-block">
       <div class="treppe-block-header" style="border-left:3px solid ${bdata.color}">
         <span class="name">${bname}</span>
         <span class="meta">${fe(bVal)} · ${bPct.toFixed(1)}% Ist / ${bdata.target}% Ziel
-          <span class="${cc(bPct-bdata.target)} badge" style="margin-left:8px">${fp(bPct-bdata.target,1)} Abw.</span>
+          <span class="badge ${bPct-bdata.target>2?'neg':bPct-bdata.target<-2?'warn':'pos'}">${fp(bPct-bdata.target,1)}</span>
         </span>
       </div>
-      <div class="tbl-wrap">
-        <table class="treppe-tbl">
-          <thead><tr>
-            <th>Fonds</th><th class="r">Käufe</th><th class="r">Letzter Kauf</th>
-            <th class="r">Investiert</th><th class="r">VWAP</th>
-            <th class="r">VWAP vs Kurs</th><th class="r">G/V %</th><th class="r">Dividenden</th>
-          </tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>
+      <div class="tbl-wrap"><table class="treppe-tbl">
+        <thead><tr>
+          <th>Fonds</th><th class="r">Käufe</th><th class="r">Letzter Kauf</th>
+          <th class="r">Investiert</th><th class="r">VWAP</th>
+          <th class="r">VWAP vs Kurs</th><th class="r">G/V %</th><th class="r">Dividenden</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
     </div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════
-//  DIVIDENDEN
-// ══════════════════════════════════════════
+// ── DIVIDENDEN ──
 function renderDividenden() {
-  const divs=G.dividends;
+  const divs=G.dividends, now=new Date(), y=now.getFullYear();
   const total=divs.reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
-  const now=new Date();
-  const y=now.getFullYear();
-  const ytd=divs.filter(d=>{const dt=new Date(d.date||d.datetime);return dt.getFullYear()===y;})
-    .reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
-  const last12=divs.filter(d=>{const dt=new Date(d.date||d.datetime);return (now-dt)<365*24*3600000;})
-    .reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
-  const cnt=divs.length;
+  const ytd=divs.filter(d=>new Date(d.date||d.datetime).getFullYear()===y).reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
+  const last12=divs.filter(d=>(now-new Date(d.date||d.datetime))<365*24*3600000).reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
 
-  document.getElementById('div-kpi').innerHTML=[
-    {label:'Gesamt (netto)',val:fe(total),sub:'Alle Zeit'},
-    {label:'YTD '+y,val:fe(ytd),sub:'Dieses Jahr'},
-    {label:'Letzte 12 Monate',val:fe(last12),sub:'Rollierend'},
-    {label:'Ausschüttungen',val:cnt,sub:'Transaktionen'},
+  document.getElementById('div-kpi').innerHTML = [
+    {label:'Gesamt (netto)', val:fe(total), sub:'Alle Zeit'},
+    {label:'YTD '+y, val:fe(ytd), sub:'Dieses Jahr'},
+    {label:'Letzte 12 Monate', val:fe(last12), sub:'Rollierend'},
+    {label:'Ausschüttungen', val:divs.length, sub:'Transaktionen'},
   ].map(k=>`<div class="card"><div class="card-label">${k.label}</div>
     <div class="card-val pos">${k.val}</div><div class="card-sub">${k.sub}</div></div>`).join('');
 
-  // Calendar – last 12 months
   const months=[];
-  for(let i=11;i>=0;i--){
-    const d=new Date(now.getFullYear(),now.getMonth()-i,1);
-    months.push({y:d.getFullYear(),m:d.getMonth(),label:d.toLocaleString('de-DE',{month:'short',year:'2-digit'})});
-  }
-  const calHtml=months.map(({y,m,label})=>{
-    const mDivs=divs.filter(d=>{const dt=new Date(d.date||d.datetime);return dt.getFullYear()===y&&dt.getMonth()===m;});
-    const mTotal=mDivs.reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
-    const names=[...new Set(mDivs.map(d=>d.asset?.name||d.name||'').filter(Boolean))].slice(0,3).join(', ');
-    return `<div class="cal-month">
-      <div class="cal-month-name">${label}</div>
-      <div class="cal-month-total ${mTotal>0?'pos':''}">${mTotal>0?fe(mTotal):'–'}</div>
-      <div class="cal-month-funds">${names||''}</div>
-    </div>`;
+  for(let i=11;i>=0;i--){ const d=new Date(now.getFullYear(),now.getMonth()-i,1); months.push({y:d.getFullYear(),m:d.getMonth(),label:d.toLocaleString('de-DE',{month:'short',year:'2-digit'})}); }
+  document.getElementById('div-cal').innerHTML = months.map(({y,m,label}) => {
+    const md=divs.filter(d=>{const dt=new Date(d.date||d.datetime);return dt.getFullYear()===y&&dt.getMonth()===m;});
+    const mt=md.reduce((s,d)=>s+Math.abs(num(d.amountNet||d.amount)),0);
+    const names=[...new Set(md.map(d=>d.asset?.name||d.name||'').filter(Boolean))].slice(0,3).join(', ');
+    return `<div class="cal-month"><div class="cal-month-name">${label}</div>
+      <div class="cal-month-total ${mt>0?'pos':''}">${mt>0?fe(mt):'–'}</div>
+      <div class="cal-month-funds">${names}</div></div>`;
   }).join('');
-  document.getElementById('div-cal').innerHTML=calHtml;
 
-  // Prognose – TTM annualisiert
-  const ttmPerIsin={};
+  const ttm={};
   divs.filter(d=>(now-new Date(d.date||d.datetime))<365*24*3600000).forEach(d=>{
     const isin=d.isin||d.asset?.isin||'other';
-    ttmPerIsin[isin]=(ttmPerIsin[isin]||0)+Math.abs(num(d.amountNet||d.amount));
+    ttm[isin]=(ttm[isin]||0)+Math.abs(num(d.amountNet||d.amount));
   });
-  const progRows=Object.entries(ttmPerIsin).sort((a,b)=>b[1]-a[1]).map(([isin,val])=>{
+  const maxV=Math.max(...Object.values(ttm),1);
+  document.getElementById('div-prog').innerHTML = Object.entries(ttm).sort((a,b)=>b[1]-a[1]).map(([isin,val])=>{
     const h=G.holdings.find(h=>(h.asset?.isin||h.isin)===isin);
     const name=h?.asset?.name||h?.name||isin;
-    const maxVal=Math.max(...Object.values(ttmPerIsin));
     return `<div class="prog-bar-row">
-      <div class="prog-bar-label" style="font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${name}</div>
-      <div class="prog-bar-track"><div class="prog-bar-fill" style="width:${val/maxVal*100}%"></div></div>
+      <div class="prog-bar-label">${name}</div>
+      <div class="prog-bar-track"><div class="prog-bar-fill" style="width:${val/maxV*100}%"></div></div>
       <div class="prog-bar-val">${fe(val)}</div>
     </div>`;
-  }).join('');
-  document.getElementById('div-prog').innerHTML=progRows||'<div style="color:var(--muted);font-size:13px">Keine Daten</div>';
+  }).join('') || '<div style="color:var(--muted);font-size:13px">Keine Daten</div>';
 
-  // Matrix
   const MONTHS=['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
-  const years=[...new Set(divs.map(d=>new Date(d.date||d.datetime).getFullYear()))].sort().slice(-3);
-  // simplified: per fund × month
-  const fundIsins=[...new Set(divs.map(d=>d.isin||d.asset?.isin||''))].filter(Boolean).slice(0,10);
-  const matHeader=['<div class="dm-header"></div>',...MONTHS.map(m=>`<div class="dm-header">${m}</div>`)].join('');
-  const matRows=fundIsins.map(isin=>{
-    const h=G.holdings.find(h=>(h.asset?.isin||h.isin)===isin);
-    const name=(h?.asset?.name||h?.name||isin).substring(0,20);
-    const mTotals=Array(12).fill(0);
-    divs.filter(d=>(d.isin||d.asset?.isin)===isin&&new Date(d.date||d.datetime).getFullYear()===y)
-      .forEach(d=>{ mTotals[new Date(d.date||d.datetime).getMonth()]+=Math.abs(num(d.amountNet||d.amount)); });
-    return `<div class="dm-cell row-label">${name}</div>`+mTotals.map(v=>
-      `<div class="dm-cell ${v>0?'has-div':''}">${v>0?fe(v).replace(' €','').trim():''}</div>`
-    ).join('');
-  }).join('');
-  document.getElementById('div-matrix').innerHTML=matHeader+matRows;
-
-  // Transactions
-  document.getElementById('div-tx').innerHTML=
-    [...divs].sort((a,b)=>new Date(b.date||b.datetime)-new Date(a.date||a.datetime))
-    .slice(0,50).map(d=>{
-      const net=Math.abs(num(d.amountNet||d.amount));
-      const gross=Math.abs(num(d.amount||0));
-      const tax=Math.max(0,gross-net);
-      const dt=new Date(d.date||d.datetime);
-      return `<tr>
-        <td>${dt.toLocaleDateString('de-DE')}</td>
-        <td><div>${d.asset?.name||d.name||'–'}</div><div class="sub-txt">${d.isin||d.asset?.isin||''}</div></td>
-        <td class="r">${fe(gross)}</td>
-        <td class="r ${tax>0?'neg':''}">${tax>0?'−'+fe(tax):'–'}</td>
-        <td class="r pos">${fe(net)}</td>
-      </tr>`;
+  const fundIsins=[...new Set(divs.map(d=>d.isin||d.asset?.isin||'').filter(Boolean))].slice(0,10);
+  document.getElementById('div-matrix').innerHTML =
+    ['<div class="dm-header"></div>',...MONTHS.map(m=>`<div class="dm-header">${m}</div>`)].join('') +
+    fundIsins.map(isin=>{
+      const h=G.holdings.find(h=>(h.asset?.isin||h.isin)===isin);
+      const name=(h?.asset?.name||h?.name||isin).substring(0,20);
+      const mt=Array(12).fill(0);
+      divs.filter(d=>(d.isin||d.asset?.isin)===isin&&new Date(d.date||d.datetime).getFullYear()===y)
+        .forEach(d=>{ mt[new Date(d.date||d.datetime).getMonth()]+=Math.abs(num(d.amountNet||d.amount)); });
+      return `<div class="dm-cell row-label">${name}</div>`+mt.map(v=>`<div class="dm-cell ${v>0?'has-div':''}">${v>0?fe(v).replace(' €','').trim():''}</div>`).join('');
     }).join('');
+
+  document.getElementById('div-tx').innerHTML = [...divs].sort((a,b)=>new Date(b.date||b.datetime)-new Date(a.date||a.datetime)).slice(0,50).map(d=>{
+    const net=Math.abs(num(d.amountNet||d.amount)), gross=Math.abs(num(d.amount||0)), tax=Math.max(0,gross-net);
+    return `<tr>
+      <td>${new Date(d.date||d.datetime).toLocaleDateString('de-DE')}</td>
+      <td><div>${d.asset?.name||d.name||'–'}</div><div class="sub-txt">${d.isin||d.asset?.isin||''}</div></td>
+      <td class="r">${fe(gross)}</td>
+      <td class="r ${tax>0?'neg':''}">${tax>0?'−'+fe(tax):'–'}</td>
+      <td class="r pos">${fe(net)}</td>
+    </tr>`;
+  }).join('');
 }
 
-// ══════════════════════════════════════════
-//  RISIKO
-// ══════════════════════════════════════════
+// ── RISIKO ──
 function renderRisiko() {
-  // Simple heuristic risk scores per block
-  const riskByBlock={
-    'Technologie':8,'Core':4,'Asien/Emerging Markets':7,'Defense':6,
-    'Energie & Infrastruktur':6,'Healthcare & Biotech':6,'Rohstoffe':7,'Frontier Markets':9,'Sonstige':5
-  };
-  const blockVals={};
-  G.holdings.forEach(h=>{
-    const b=assignBlock(h);
-    blockVals[b]=(blockVals[b]||0)+num(h.position?.currentValue||h.currentValue);
-  });
-  // Weighted risk score
-  let totalRisk=0, totalWeight=0;
-  Object.entries(blockVals).forEach(([b,v])=>{
-    const r=riskByBlock[b]||5;
-    totalRisk+=r*v; totalWeight+=v;
-  });
-  const score=totalWeight?(totalRisk/totalWeight).toFixed(1):0;
+  const riskByBlock={'Technologie':8,'Core':4,'Asien/Emerging Markets':7,'Defense':6,'Energie & Infrastruktur':6,'Healthcare & Biotech':6,'Rohstoffe':7,'Frontier Markets':9,'Sonstige':5};
+  const bv={};
+  G.holdings.forEach(h=>{const b=assignBlock(h);bv[b]=(bv[b]||0)+num(h.position?.currentValue||h.currentValue);});
+  let tr=0,tw=0;
+  Object.entries(bv).forEach(([b,v])=>{tr+=(riskByBlock[b]||5)*v;tw+=v;});
+  const score=(tw?tr/tw:5).toFixed(1);
   const rLabel=score<4?'Konservativ':score<6?'Ausgewogen':score<8?'Dynamisch':'Aggressiv';
   const rColor=score<4?'var(--green)':score<6?'var(--yellow)':score<8?'var(--orange)':'var(--red)';
-
   document.getElementById('risk-score').textContent=score;
   document.getElementById('risk-score').style.color=rColor;
   document.getElementById('risk-label').textContent=rLabel;
   const bar=document.getElementById('risk-bar');
-  bar.style.width=(score/10*100)+'%';
-  bar.style.background=rColor;
+  bar.style.width=(score/10*100)+'%'; bar.style.background=rColor;
 
-  // Block risk bars
   document.getElementById('block-risk').innerHTML=Object.entries(BLOCKS).map(([b,d])=>{
     const r=riskByBlock[b]||5;
     const c=r<4?'var(--green)':r<6?'var(--yellow)':r<8?'var(--orange)':'var(--red)';
-    return `<div class="alloc-row">
-      <div class="alloc-name">${b}</div>
+    return `<div class="alloc-row"><div class="alloc-name">${b}</div>
       <div class="alloc-track"><div class="alloc-fill" style="width:${r/10*100}%;background:${c}"></div></div>
-      <div class="alloc-pct" style="color:${c}">${r}/10</div>
-    </div>`;
+      <div class="alloc-pct" style="color:${c}">${r}/10</div></div>`;
   }).join('');
 
-  // Concentration risk
-  const topN=[...G.holdings].sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue)).slice(0,5);
-  document.getElementById('concentration-risk').innerHTML=topN.map(h=>{
-    const val=num(h.position?.currentValue||h.currentValue);
-    const pct=G.tv?(val/G.tv*100):0;
-    const warn=pct>15;
-    return `<div class="alloc-row">
-      <div class="alloc-name" style="font-size:11px">${h.asset?.name||h.name||'–'}</div>
-      <div class="alloc-track"><div class="alloc-fill" style="width:${Math.min(pct/20*100,100)}%;background:${warn?'var(--red)':'var(--blue)'}"></div></div>
-      <div class="alloc-pct ${warn?'neg':''}">${pct.toFixed(1)}%</div>
-    </div>`;
+  document.getElementById('concentration-risk').innerHTML=[...G.holdings]
+    .sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue)).slice(0,5).map(h=>{
+      const val=num(h.position?.currentValue||h.currentValue),pct=G.tv?val/G.tv*100:0,warn=pct>15;
+      return `<div class="alloc-row"><div class="alloc-name" style="font-size:11px">${h.asset?.name||h.name||'–'}</div>
+        <div class="alloc-track"><div class="alloc-fill" style="width:${Math.min(pct/20*100,100)}%;background:${warn?'var(--red)':'var(--blue)'}"></div></div>
+        <div class="alloc-pct ${warn?'neg':''}">${pct.toFixed(1)}%</div></div>`;
+    }).join('');
+
+  const geoMap={'Technologie':'USA/Global','Core':'Global','Asien/Emerging Markets':'Asien/EM','Defense':'Global','Energie & Infrastruktur':'Global','Healthcare & Biotech':'Global','Rohstoffe':'Global','Frontier Markets':'Frontier'};
+  const gv={};
+  Object.entries(bv).forEach(([b,v])=>{const g=geoMap[b]||'Sonstige';gv[g]=(gv[g]||0)+v;});
+  const gc={'USA/Global':'var(--blue)','Asien/EM':'var(--yellow)','Global':'var(--green)','Frontier':'var(--purple)'};
+  document.getElementById('geo-risk').innerHTML=Object.entries(gv).sort((a,b)=>b[1]-a[1]).map(([g,v])=>{
+    const pct=G.tv?v/G.tv*100:0;
+    return `<div class="alloc-row"><div class="alloc-name">${g}</div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:${pct}%;background:${gc[g]||'var(--muted)'}"></div></div>
+      <div class="alloc-pct">${pct.toFixed(1)}%</div></div>`;
   }).join('');
 
-  // Geo risk (by block as proxy)
-  const geoMap={'Technologie':'USA/Global','Core':'Global','Asien/Emerging Markets':'Asien/EM',
-    'Defense':'Global','Energie & Infrastruktur':'Global','Healthcare & Biotech':'Global',
-    'Rohstoffe':'Global','Frontier Markets':'Frontier'};
-  const geoVals={};
-  Object.entries(blockVals).forEach(([b,v])=>{ const g=geoMap[b]||'Sonstige'; geoVals[g]=(geoVals[g]||0)+v; });
-  const geoColors={'USA/Global':'var(--blue)','Asien/EM':'var(--yellow)','Global':'var(--green)','Frontier':'var(--purple)'};
-  document.getElementById('geo-risk').innerHTML=Object.entries(geoVals).sort((a,b)=>b[1]-a[1]).map(([g,v])=>{
-    const pct=G.tv?(v/G.tv*100):0;
-    return `<div class="alloc-row">
-      <div class="alloc-name">${g}</div>
-      <div class="alloc-track"><div class="alloc-fill" style="width:${pct}%;background:${geoColors[g]||'var(--muted)'}"></div></div>
-      <div class="alloc-pct">${pct.toFixed(1)}%</div>
-    </div>`;
-  }).join('');
-
-  // Risk table per holding
-  document.getElementById('risk-table').innerHTML=
-    [...G.holdings].sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue))
-    .map(h=>{
-      const inv=num(h.position?.purchaseValue||h.investedCapital||0);
-      const val=num(h.position?.currentValue||h.currentValue);
-      const pnlPct=inv?(val-inv)/inv*100:0;
-      const b=assignBlock(h);
-      const r=riskByBlock[b]||5;
-      const rC=r<4?'var(--green)':r<6?'var(--yellow)':r<8?'var(--orange)':'var(--red)';
-      const label=r<4?'Konservativ':r<6?'Ausgewogen':r<8?'Dynamisch':'Aggressiv';
+  document.getElementById('risk-table').innerHTML=[...G.holdings]
+    .sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue)).map(h=>{
+      const inv=num(h.position?.purchaseValue||h.investedCapital||0),val=num(h.position?.currentValue||h.currentValue);
+      const pnlPct=inv?(val-inv)/inv*100:0,b=assignBlock(h),r=riskByBlock[b]||5;
+      const rc=r<4?'var(--green)':r<6?'var(--yellow)':r<8?'var(--orange)':'var(--red)';
       return `<tr>
         <td><div class="ticker" style="font-size:12px">${h.asset?.name||h.name||'–'}</div></td>
         <td><span class="chip chip-blue" style="font-size:10px">${b}</span></td>
         <td class="r ${cc(pnlPct)}">${fp(pnlPct)}</td>
-        <td class="r" style="color:${rC};font-weight:700">${r}/10</td>
-        <td><span style="font-size:12px;color:${rC}">${label}</span></td>
+        <td class="r" style="color:${rc};font-weight:700">${r}/10</td>
+        <td style="color:${rc};font-size:12px">${r<4?'Konservativ':r<6?'Ausgewogen':r<8?'Dynamisch':'Aggressiv'}</td>
       </tr>`;
     }).join('');
 }
 
-// ══════════════════════════════════════════
-//  REBALANCING
-// ══════════════════════════════════════════
+// ── REBALANCING ──
 function renderRebalancing() {
-  const blockVals={};
-  G.holdings.forEach(h=>{
-    const b=assignBlock(h);
-    blockVals[b]=(blockVals[b]||0)+num(h.position?.currentValue||h.currentValue);
-  });
-  let overAmt=0, underAmt=0;
-  Object.entries(BLOCKS).forEach(([b,d])=>{
-    const ist=blockVals[b]||0;
-    const ziel=G.tv*d.target/100;
-    const diff=ist-ziel;
-    if(diff>0) overAmt+=diff; else underAmt+=Math.abs(diff);
-  });
+  const bv={};
+  G.holdings.forEach(h=>{const b=assignBlock(h);bv[b]=(bv[b]||0)+num(h.position?.currentValue||h.currentValue);});
+  let over=0,under=0;
+  Object.entries(BLOCKS).forEach(([b,d])=>{const ist=bv[b]||0,ziel=G.tv*d.target/100,diff=ist-ziel;if(diff>0)over+=diff;else under+=Math.abs(diff);});
+  const okCount=Object.entries(BLOCKS).filter(([b,d])=>{const p=G.tv?(bv[b]||0)/G.tv*100:0;return Math.abs(p-d.target)<2;}).length;
 
   document.getElementById('reb-kpi').innerHTML=[
     {label:'Depotwert',val:fe(G.tv),sub:''},
-    {label:'Übergewichtet',val:fe(overAmt),sub:'Verkauf-Potenzial',cls:'neg'},
-    {label:'Untergewichtet',val:fe(underAmt),sub:'Kaufbedarf',cls:'pos'},
-    {label:'Blöcke OK',val:Object.entries(BLOCKS).filter(([b,d])=>{const i=blockVals[b]||0;const p=G.tv?i/G.tv*100:0;return Math.abs(p-d.target)<2;}).length+'/'+Object.keys(BLOCKS).length,sub:'±2% Toleranz'},
+    {label:'Übergewichtet',val:fe(over),sub:'Verkauf-Potenzial',cls:'neg'},
+    {label:'Untergewichtet',val:fe(under),sub:'Kaufbedarf',cls:'pos'},
+    {label:'Blöcke OK',val:okCount+'/'+Object.keys(BLOCKS).length,sub:'±2% Toleranz'},
   ].map(k=>`<div class="card"><div class="card-label">${k.label}</div>
     <div class="card-val ${k.cls||''}">${k.val}</div><div class="card-sub">${k.sub}</div></div>`).join('');
 
   document.getElementById('reb-blocks').innerHTML=Object.entries(BLOCKS).map(([bname,bdata])=>{
-    const ist=blockVals[bname]||0;
-    const ziel=G.tv*bdata.target/100;
-    const diff=ist-ziel;
-    const istPct=G.tv?(ist/G.tv*100):0;
+    const ist=bv[bname]||0,ziel=G.tv*bdata.target/100,diff=ist-ziel;
+    const istPct=G.tv?ist/G.tv*100:0;
     const signal=Math.abs(istPct-bdata.target)<2?'OK':diff>0?'Übergewichtet':'Untergewichtet';
     const sigClass=signal==='OK'?'chip-green':diff>0?'chip-red':'chip-yellow';
-
     const holdings=(G.holdings||[]).filter(h=>assignBlock(h)===bname)
       .sort((a,b)=>num(b.position?.currentValue||b.currentValue)-num(a.position?.currentValue||a.currentValue));
-
     const rows=holdings.map(h=>{
-      const val=num(h.position?.currentValue||h.currentValue);
-      const inv=num(h.position?.purchaseValue||h.investedCapital||0);
-      const pnlPct=inv?(val-inv)/inv*100:0;
-      const dp=h.performance?.dayReturnPct||h.todayReturnPct;
-      const bShare=ist?(val/ist*100):0;
+      const val=num(h.position?.currentValue||h.currentValue),inv=num(h.position?.purchaseValue||h.investedCapital||0);
+      const pnlPct=inv?(val-inv)/inv*100:0,dp=h.performance?.dayReturnPct||h.todayReturnPct;
+      const bShare=ist?val/ist*100:0;
       return `<tr>
-        <td style="font-size:12px"><div class="ticker">${h.asset?.name||h.name||'–'}</div>
-          <div class="sub-txt">${h.asset?.isin||''}</div></td>
-        <td class="r">${fe(val)}</td>
-        <td class="r">${bShare.toFixed(1)}%</td>
+        <td style="font-size:12px"><div class="ticker">${h.asset?.name||h.name||'–'}</div><div class="sub-txt">${h.asset?.isin||''}</div></td>
+        <td class="r">${fe(val)}</td><td class="r">${bShare.toFixed(1)}%</td>
         <td class="r ${cc(pnlPct)}">${fp(pnlPct)}</td>
         <td class="r ${cc(dp)}">${dp!=null?fp(dp):'–'}</td>
       </tr>`;
     }).join('');
-
     return `<div class="block-card">
       <div class="block-hdr" style="border-top:2px solid ${bdata.color}">
         <div class="block-name">${bname}</div>
@@ -865,29 +681,20 @@ function renderRebalancing() {
           <span class="chip ${sigClass}">${signal}</span>
         </div>
       </div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Fonds</th><th class="r">Wert</th><th class="r">Im Block</th><th class="r">G/V %</th><th class="r">Heute</th></tr></thead>
-          <tbody>${rows||'<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">Keine Positionen</td></tr>'}</tbody>
-        </table>
-      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Fonds</th><th class="r">Wert</th><th class="r">Im Block</th><th class="r">G/V %</th><th class="r">Heute</th></tr></thead>
+        <tbody>${rows||'<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:16px">Keine Positionen</td></tr>'}</tbody>
+      </table></div>
     </div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════
-//  UI HELPERS
-// ══════════════════════════════════════════
-function show(id) {
-  ['auth','loading','app'].forEach(s=>{
-    document.getElementById(s).style.display=(s===id)?(s==='app'?'block':'flex'):'none';
-  });
-}
-function setMsg(m){document.getElementById('load-msg').textContent=m}
-function showErr(m){document.getElementById('auth-err').innerHTML=`<div class="err">⚠️ ${m}</div>`}
-function logout(){clear();show('auth');document.getElementById('auth-err').innerHTML=''}
+// ── UI ──
+function show(id){['auth','loading','app'].forEach(s=>{document.getElementById(s).style.display=(s===id)?(s==='app'?'block':'flex'):'none';});}
+function setMsg(m){document.getElementById('load-msg').textContent=m;}
+function showErr(m){document.getElementById('auth-err').innerHTML=`<div class="err">⚠️ ${m}</div>`;}
+function logout(){clear();show('auth');document.getElementById('auth-err').innerHTML='';}
 
-// Tabs
 document.querySelectorAll('.tab').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -897,12 +704,11 @@ document.querySelectorAll('.tab').forEach(t=>{
   });
 });
 
-// Init
 (function(){
   const p=new URLSearchParams(location.search);
-  const code=p.get('code'), state=p.get('state');
-  if(code&&state){ handleCB(code,state); return; }
-  if(load()){ loadAll(); return; }
+  const code=p.get('code'),state=p.get('state');
+  if(code&&state){handleCB(code,state);return;}
+  if(load()){loadAll();return;}
   show('auth');
 })();
 </script>
