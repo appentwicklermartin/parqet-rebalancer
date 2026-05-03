@@ -299,17 +299,19 @@ async function startOAuth() {
 }
 
 async function handleCB(code, state) {
-  if (state !== localStorage.getItem('pq_s')) {
+  show('loading'); setMsg('Authentifizierung…');
+  // Verifier aus localStorage holen - funktioniert auch nach Tab-Wechsel
+  const verifier = localStorage.getItem('pq_v');
+  if (!verifier) {
     show('auth');
-    showErr('State mismatch – pq_s: ' + localStorage.getItem('pq_s')?.substring(0,8) + ' vs ' + state?.substring(0,8));
+    showErr('Session abgelaufen – bitte nochmal anmelden.');
     return;
   }
-  show('loading'); setMsg('Authentifizierung…');
   try {
     const body = new URLSearchParams({
       grant_type: 'authorization_code', code,
       redirect_uri: REDIRECT, client_id: CLIENT_ID,
-      code_verifier: localStorage.getItem('pq_v')
+      code_verifier: verifier
     });
     const res = await fetch(TOKEN_URL, {
       method: 'POST',
