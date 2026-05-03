@@ -287,27 +287,41 @@ const genC = async v => b64u(await crypto.subtle.digest('SHA-256', new TextEncod
 
 const save  = t => sessionStorage.setItem('pq_tok', JSON.stringify(t));
 const load  = () => { try { return JSON.parse(sessionStorage.getItem('pq_tok')); } catch { return null; } };
-const clear = () => ['pq_tok','pq_v','pq_s'].forEach(k => sessionStorage.removeItem(k));
+const clear = () => { ['pq_tok'].forEach(k=>sessionStorage.removeItem(k)); ['pq_v','pq_s'].forEach(k=>localStorage.removeItem(k)); };
 
 async function startOAuth() {
   const v = genV(), c = await genC(v), s = b64u(crypto.getRandomValues(new Uint8Array(16)));
-  sessionStorage.setItem('pq_v', v); sessionStorage.setItem('pq_s', s);
+  localStorage.setItem('pq_v', v);
+  localStorage.setItem('pq_s', s);
   const p = new URLSearchParams({ client_id:CLIENT_ID, response_type:'code', redirect_uri:REDIRECT,
     scope:'portfolio:read', code_challenge:c, code_challenge_method:'S256', state:s });
   location.href = AUTH_URL + '?' + p;
 }
 
 async function handleCB(code, state) {
-  if (state !== sessionStorage.getItem('pq_s')) { show('auth'); showErr('State mismatch.'); return; }
+  if (state !== localStorage.getItem('pq_s')) {
+    show('auth');
+    showErr('State mismatch – pq_s: ' + localStorage.getItem('pq_s')?.substring(0,8) + ' vs ' + state?.substring(0,8));
+    return;
+  }
   show('loading'); setMsg('Authentifizierung…');
-  const res = await fetch(TOKEN_URL, { method:'POST',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body: new URLSearchParams({ grant_type:'authorization_code', code, redirect_uri:REDIRECT,
-      client_id:CLIENT_ID, code_verifier:sessionStorage.getItem('pq_v') }) });
-  if (!res.ok) { show('auth'); showErr('Token-Fehler: ' + res.status); return; }
-  save(await res.json());
-  history.replaceState({}, '', location.pathname);
-  await loadAll();
+  try {
+    const body = new URLSearchParams({
+      grant_type: 'authorization_code', code,
+      redirect_uri: REDIRECT, client_id: CLIENT_ID,
+      code_verifier: localStorage.getItem('pq_v')
+    });
+    const res = await fetch(TOKEN_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body
+    });
+    const text = await res.text();
+    if (!res.ok) { show('auth'); showErr('Token-Fehler ' + res.status + ': ' + text); return; }
+    save(JSON.parse(text));
+    history.replaceState({}, '', location.pathname);
+    await loadAll();
+  } catch(e) { show('auth'); showErr('Fehler: ' + e.message); }
 }
 
 async function api(path, opts={}) {
@@ -707,6 +721,11 @@ document.querySelectorAll('.tab').forEach(t=>{
 (function(){
   const p=new URLSearchParams(location.search);
   const code=p.get('code'),state=p.get('state');
+  // Debug: zeige URL-Parameter
+  if(code) console.log('OAuth code empfangen:', code.substring(0,20)+'...');
+  if(state) console.log('OAuth state empfangen:', state.substring(0,10)+'...');
+  console.log('Gespeicherter state:', localStorage.getItem('pq_s')?.substring(0,10));
+  console.log('Gespeicherter verifier:', localStorage.getItem('pq_v')?.substring(0,10));
   if(code&&state){handleCB(code,state);return;}
   if(load()){loadAll();return;}
   show('auth');
